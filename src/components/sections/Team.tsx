@@ -35,12 +35,12 @@ export function Team() {
           {team.map((m) => (
             <Card
               key={m.title}
-              className="rounded-[28px] border border-trivita-forest/10 bg-card p-6 shadow-softSm"
+              className="rounded-[28px] border border-border bg-card p-6 shadow-softSm"
             >
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="relative h-16 w-16 overflow-hidden rounded-full border border-trivita-forest/10">
-                    <div className="grid h-full w-full place-items-center bg-trivita-forest/10 text-trivita-forest">
+                  <div className="relative h-16 w-16 overflow-hidden rounded-full border border-border">
+                    <div className="grid h-full w-full place-items-center bg-primary/10 text-primary">
                       <User className="h-7 w-7" aria-hidden="true" />
                     </div>
                   </div>

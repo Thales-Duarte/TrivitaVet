@@ -1,5 +1,6 @@
 export * from "./Header";
 export * from "./Hero";
+export * from "./SectionDivider";
 export * from "./WhyChoose";
 export * from "./ZeroFeeBand";
 export * from "./HowItWorks";

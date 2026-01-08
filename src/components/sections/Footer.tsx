@@ -21,8 +21,8 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link href="#home" className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
-                <Dog className="h-6 w-6" aria-hidden="true" />
+              <div className="grid h-14 w-14 place-items-center rounded-xl bg-primary/10 text-primary">
+                <Dog className="h-10 w-10" aria-hidden="true" />
               </div>
               <div>
                 <div className="text-sm font-semibold leading-none text-foreground">

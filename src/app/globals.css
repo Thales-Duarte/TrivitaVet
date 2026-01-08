@@ -1,5 +1,39 @@
 @import "tailwindcss";
 
+/* Keyframes utilitárias (Tailwind v4) */
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Animação do accordion (Radix) */
+@media (prefers-reduced-motion: no-preference) {
+  [data-radix-accordion-content][data-state="open"] {
+    animation: accordion-down 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-radix-accordion-content][data-state="closed"] {
+    animation: accordion-up 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
 :root {
   /* Tokens base (HSL) - compatível com shadcn/ui */
   /* Trivita Vet (paleta oficial) */
@@ -71,13 +105,7 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* Gutter consistente em telas pequenas/médias */
-@media (max-width: 640px) {
-  .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-}
+/* (removido) Gutter mobile era sobrescrito aqui e impedia ajustes no container */
 
 h1,
 h2,
@@ -92,8 +120,9 @@ html {
 /* Scrollbar (Firefox) */
 * {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in hsl, hsl(var(--primary)) 65%, hsl(var(--brand)) 35%)
-    hsl(var(--background));
+  /* Thumb mais neutro/escuro e track creme: menos “verde vivo” */
+  scrollbar-color: color-mix(in hsl, hsl(var(--foreground)) 55%, hsl(var(--primary)) 45%)
+    color-mix(in hsl, hsl(var(--background)) 92%, hsl(var(--muted)) 8%);
 }
 
 /* Scrollbar (Chromium/WebKit) */
@@ -103,17 +132,18 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: color-mix(in hsl, hsl(var(--background)) 92%, hsl(var(--muted)) 8%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: color-mix(in hsl, hsl(var(--primary)) 70%, hsl(var(--brand)) 30%);
+  background: color-mix(in hsl, hsl(var(--foreground)) 55%, hsl(var(--primary)) 45%);
   border-radius: 999px;
-  border: 2px solid hsl(var(--background));
+  border: 2px solid color-mix(in hsl, hsl(var(--background)) 92%, hsl(var(--muted)) 8%);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in hsl, hsl(var(--primary)) 55%, hsl(var(--brand)) 45%);
+  /* Hover com toque de laranja da marca (sem virar “laranjão”) */
+  background: color-mix(in hsl, hsl(var(--foreground)) 55%, hsl(var(--brand)) 45%);
 }
 
 /* Evita scroll horizontal acidental em mobile (ex.: efeitos, carrossel, sombras) */
@@ -127,21 +157,21 @@ body {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
 }
 
 @media (min-width: 640px) {
   .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
   }
 }
 
@@ -182,6 +212,45 @@ select {
   background-size: 0% 2px;
 }
 
+/* Botões/ações: feedback de “press” consistente (use class="pressable") */
+.pressable {
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pressable {
+    transition:
+      transform 120ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+  .pressable:active {
+    transform: translateY(1px) scale(0.99);
+  }
+}
+
+/* Ícones clicáveis (círculos do header/FAB): efeito pop sutil */
+.icon-pop {
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .icon-pop {
+    transition:
+      transform 160ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+  .icon-pop:hover {
+    transform: translateY(-2px) scale(1.03);
+  }
+  .icon-pop:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .link {
     transition:
@@ -211,6 +280,9 @@ select {
   .hover-lift:hover {
     transform: translateY(-2px);
   }
+  .hover-lift:active {
+    transform: translateY(0);
+  }
 }
 
 a:focus-visible {
@@ -230,4 +302,33 @@ main {
 /* Pequenas utilidades “de produto” */
 .section {
   scroll-margin-top: 96px;
+}
+
+/* Barra divisória entre seções (mais evidente, mas ainda elegante) */
+.section-divider {
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in hsl, hsl(var(--border)) 55%, hsl(var(--foreground)) 45%),
+    transparent
+  );
+  position: relative;
+}
+
+.section-divider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--brand) / 0.18),
+    transparent
+  );
+  filter: blur(0.6px);
+  opacity: 0.9;
 }

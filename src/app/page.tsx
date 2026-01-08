@@ -16,11 +16,14 @@ import {
   Team,
   TestimonialCarousel,
   Bio,
+  SectionDivider,
   WhyChoose,
 } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Veterinário a domicílio | Brasília-DF",
+  title: {
+    absolute: "Trivita Vet",
+  },
   description:
     "Saúde e bem-estar para o seu pet onde ele se sente melhor: em casa 💚",
 };
@@ -29,21 +32,29 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <FloatingWhatsApp />
       <BackToTop />
-      <main>
-        <Hero />
-        <ZeroFeeBand />
-        <WhyChoose />
-        <HowItWorks />
-        <ServicesGrid />
-        <Coverage />
-        <Bio />
-        <Team />
-        <TestimonialCarousel />
-        <FaqAccordion />
-        <FinalCta />
-      </main>
+      <FloatingWhatsApp />
+      <Hero />
+      <SectionDivider />
+      <ZeroFeeBand />
+      <SectionDivider />
+  <WhyChoose />
+  <SectionDivider />
+      <HowItWorks />
+  <SectionDivider />
+      <ServicesGrid />
+      <SectionDivider />
+      <Coverage />
+      <SectionDivider />
+      <Bio />
+      <SectionDivider />
+      <Team />
+      <SectionDivider />
+      <TestimonialCarousel />
+      <SectionDivider />
+      <FaqAccordion />
+      <SectionDivider />
+      <FinalCta />
       <Footer />
     </div>
   );

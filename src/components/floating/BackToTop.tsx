@@ -49,7 +49,7 @@ export function BackToTop() {
       onClick={scrollToTop}
       aria-label="Voltar ao topo"
       className={
-        "fixed bottom-5 right-[5.25rem] z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-softSm backdrop-blur transition md:bottom-8 md:right-[6.25rem] " +
+        "pressable icon-pop fixed bottom-5 right-[5.25rem] z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-softSm backdrop-blur transition hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:hover:-translate-y-0.5 md:bottom-8 md:right-[6.25rem] " +
         (visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0")

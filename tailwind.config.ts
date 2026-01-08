@@ -36,7 +36,11 @@ const config: Config = {
           foreground: "hsl(var(--accent-foreground))",
         },
         // Destaque (ouro/laranja) — uso controlado para quebrar monocromia
-        warning: "hsl(var(--brand))",
+        warning: {
+          DEFAULT: "hsl(var(--brand))",
+          // Contraste para texto/ícone em cima do laranja
+          foreground: "hsl(var(--foreground))",
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

@@ -9,9 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        // Primário (verde): para ações padrão
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        cta: "bg-primary text-primary-foreground hover:bg-primary/90",
-        brand: "bg-trivita-gold text-trivita-ink shadow-softSm hover:brightness-95",
+        // CTA (laranja da marca): ação principal
+        cta: "bg-warning text-warning-foreground hover:brightness-95",
+        brand:
+          "bg-warning text-warning-foreground shadow-softSm hover:brightness-95",
         secondary: "bg-secondary text-secondary-foreground hover:opacity-90",
         outline:
           "border border-border bg-transparent text-foreground hover:bg-muted",

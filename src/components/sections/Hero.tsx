@@ -25,7 +25,7 @@ export function Hero() {
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button asChild size="lg" variant="cta" className="shadow-soft">
+            <Button asChild size="lg" variant="cta" className="shadow-softSm">
               <a
                 href={siteConfig.whatsapp}
                 target="_blank"
