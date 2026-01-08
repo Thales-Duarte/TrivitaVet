@@ -1,18 +1,6 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
-
-export default eslintConfig;
+// NOTE:
+// This repository uses ESLint v8 with a classic config in `.eslintrc.json`.
+// The previous flat-config file imported from `eslint/config`, which only
+// works with ESLint v9+. Keeping this file as a no-op prevents ESLint from
+// crashing when it tries to load `eslint.config.mjs` automatically.
+export default [];

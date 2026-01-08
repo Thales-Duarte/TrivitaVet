@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+> Importante: execute os comandos **dentro da pasta** `vet-site/`.
+
 First, run the development server:
 
 ```bash
