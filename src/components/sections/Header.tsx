@@ -49,8 +49,8 @@ export function Header() {
 					className="flex items-center gap-3"
 					aria-label={`${siteConfig.name} - Início`}
 				>
-					<div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
-						<Dog className="h-6 w-6" aria-hidden="true" />
+					<div className="grid h-14 w-14 place-items-center rounded-xl bg-primary/10 text-primary">
+						<Dog className="h-10 w-10" aria-hidden="true" />
 					</div>
 					<div className="hidden sm:block">
 						<div className="text-sm font-semibold leading-none text-foreground">
@@ -81,14 +81,16 @@ export function Header() {
 
 				<div className="hidden items-center gap-3 lg:flex">
 					<a
-						className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+						className="icon-pop inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm hover:border-[hsl(var(--brand)/0.4)] hover:bg-[hsl(var(--brand))] hover:text-foreground hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						data-header-icon
 						href={`tel:${siteConfig.phoneE164}`}
 						aria-label="Telefone"
 					>
 						<Phone className="h-4 w-4" />
 					</a>
 					<a
-						className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+						className="icon-pop inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm hover:border-[hsl(var(--brand)/0.4)] hover:bg-[hsl(var(--brand))] hover:text-foreground hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						data-header-icon
 						href={siteConfig.instagram}
 						target="_blank"
 						rel="noreferrer"
@@ -97,25 +99,32 @@ export function Header() {
 						<Instagram className="h-4 w-4" />
 					</a>
 					<a
-						className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+						className="icon-pop inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm hover:border-[hsl(var(--brand)/0.4)] hover:bg-[hsl(var(--brand))] hover:text-foreground hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						data-header-icon
 						href={`mailto:${siteConfig.email}`}
 						aria-label="E-mail"
 					>
 						<Mail className="h-4 w-4" />
 					</a>
 					<a
-						className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+						className="icon-pop inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm hover:border-[hsl(var(--brand)/0.4)] hover:bg-[hsl(var(--brand))] hover:text-foreground hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						data-header-icon
 						href="#cobertura"
 						aria-label="Área de Cobertura"
 					>
 						<MapPin className="h-4 w-4" />
 					</a>
-					<Button asChild size="default" variant="cta" className="shadow-softSm">
+					<Button
+						asChild
+						size="default"
+						variant="cta"
+						className="pressable shadow-softSm transition-all duration-200 hover:shadow-soft motion-safe:hover:-translate-y-0.5"
+					>
 						<a
 							href={siteConfig.whatsapp}
 							target="_blank"
 							rel="noreferrer"
-							className="link"
+							className="no-underline"
 						>
 							<MessageCircle className="h-4 w-4" />
 							Agendar Consulta
@@ -124,20 +133,25 @@ export function Header() {
 				</div>
 
 				<div className="flex items-center gap-2 lg:hidden">
-					<Button asChild variant="cta" size="icon" className="rounded-full">
+					<Button
+						asChild
+						variant="cta"
+						size="icon"
+						className="rounded-full bg-primary text-primary-foreground shadow-softSm transition-colors duration-200 hover:bg-warning hover:text-warning-foreground"
+					>
 						<a
 							href={siteConfig.whatsapp}
 							target="_blank"
 							rel="noreferrer"
 							aria-label="Agendar via WhatsApp"
-							className="link"
+							className="no-underline"
 						>
 							<MessageCircle className="h-5 w-5" />
 						</a>
 					</Button>
 					<button
 						type="button"
-						className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
+						className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm transition-colors duration-200 hover:border-warning/40 hover:bg-warning hover:text-warning-foreground"
 						onClick={() => setOpen((v) => !v)}
 						aria-label={open ? "Fechar menu" : "Abrir menu"}
 					>
@@ -179,7 +193,7 @@ export function Header() {
 									href={siteConfig.whatsapp}
 									target="_blank"
 									rel="noreferrer"
-									className="link"
+									className="no-underline"
 								>
 									<MessageCircle className="h-4 w-4" />
 									Agendar Consulta
@@ -188,14 +202,14 @@ export function Header() {
 
 							<div className="flex items-center justify-center gap-3">
 								<a
-									className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+									className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm transition-colors duration-200 hover:border-warning/40 hover:bg-warning hover:text-warning-foreground"
 									href={`tel:${siteConfig.phoneE164}`}
 									aria-label="Telefone"
 								>
 									<Phone className="h-4 w-4" />
 								</a>
 								<a
-									className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+									className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm transition-colors duration-200 hover:border-warning/40 hover:bg-warning hover:text-warning-foreground"
 									href={siteConfig.instagram}
 									target="_blank"
 									rel="noreferrer"
@@ -204,7 +218,7 @@ export function Header() {
 									<Instagram className="h-4 w-4" />
 								</a>
 								<a
-									className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+									className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-softSm transition-colors duration-200 hover:border-warning/40 hover:bg-warning hover:text-warning-foreground"
 									href={`mailto:${siteConfig.email}`}
 									aria-label="E-mail"
 								>
@@ -222,4 +236,3 @@ export function Header() {
 		</header>
 	);
 }
-
